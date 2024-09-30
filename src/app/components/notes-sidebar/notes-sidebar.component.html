@@ -1,0 +1,42 @@
+<div class="h-full p-4 overflow-y-auto">
+  <h2 class="mb-4 text-xl font-bold">Google Keep Notes</h2>
+  <label class="flex items-center gap-1 my-2 input input-bordered">
+    <input type="text" class="grow" placeholder="Search" [(ngModel)]="searchTerm" />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      class="w-4 h-4 opacity-70">
+      <path
+        fill-rule="evenodd"
+        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+        clip-rule="evenodd" />
+    </svg>
+  </label>
+  
+  <div class="flex items-center mb-2">
+    <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()" class="checkbox" />
+    <span class="ml-2 font-medium">Select All</span>
+  </div>
+
+  <!-- Display message if there are no notes -->
+  <div *ngIf="hasNoNotes" class="text-center text-gray-500">
+    No notes available, please save some notes from the Geminotes extension.
+  </div>
+
+  <div class="grid grid-cols-1 gap-4">
+    <div *ngFor="let group of filterNotes()" 
+         class="relative shadow-xl cursor-pointer card bg-base-100"
+         [ngClass]="{'border-2 border-blue-500': group.selected}"
+         (click)="toggleSelection(group)">
+      <div class="card-body">
+        <div class="absolute flex items-center justify-center w-6 h-6 text-xs text-white bg-blue-500 rounded-full top-2 right-2">
+          {{ group.notes.length }}
+        </div>
+        <h2 class="text-sm card-title">{{ group.notes[0].title }}</h2>
+        <a [href]="group.url" class="text-xs text-blue-600">{{ group.url | truncate:30 }}</a>
+        <p class="text-xs">{{ group.notes[0].content | truncate:50 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
