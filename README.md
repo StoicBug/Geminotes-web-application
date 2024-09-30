@@ -4,6 +4,12 @@ Geminotes is a Chrome extension and web application designed to help users save 
 
 ![Geminotes Preview](assets/geminotes-preview.png)
 
+## Links
+- Chrome Extension Repository: [https://github.com/StoicBug/Geminotes-web-application](https://github.com/StoicBug/Geminotes-chrome-extention)
+- Web Application Repository: (This repo)
+- Blog Post: https://blog.mlnomads.com/aisprint-geminotes
+- Youtube Video Demo: https://www.youtube.com/watch?v=kmNjNefigCE
+
 ## Features
 
 ### Chrome Extension
